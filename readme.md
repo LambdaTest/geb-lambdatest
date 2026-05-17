@@ -1,74 +1,58 @@
-<a href="https://www.automation.lambdatest.com">![LambdaTest Logo](https://www.lambdatest.com/static/images/logo.svg)</a>
+# Run Geb Tests with Selenium on TestMu AI (Formerly LambdaTest)
 
-# Geb Tutorial Using Gradle Project On Online Selenium Grid
+<p align="center">
+  <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
+  <a href="https://mvnrepository.com/artifact/org.gebish/geb-core"><img src="https://img.shields.io/maven-central/v/org.gebish/geb-core.svg?style=for-the-badge&labelColor=000000" alt="Geb version"></a>
+  <a href="https://community.testmuai.com/"><img src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&labelColor=000000" alt="Community"></a>
+</p>
 
-Based on Groovy, Geb is a web testing automation framework. It is build as a wrapper over Selenium WebDriver which makes it ideal for automated browser testing. Geb automation testing framework can help you automate cross browser testing over every browser that is supported by Selenium WebDriver. Geb automation testing framework offers excellent features for web testing, screen scraping, and more. What makes Geb unique is the way it queries your HTML pages, it does so by offering the jQuery-like syntax. Also, it provides built-in support for the Page Object pattern.
+## Getting Started
 
-LambdaTest integration with Geb will help you execute your Geb test automation scripts on our online Selenium Grid of 2000+ real browsers to ensure your web application renders well on as many browsers as you are targeting to test.
+[TestMu AI](https://www.testmuai.com/) (Formerly LambdaTest) is the world's first full-stack AI Agentic Quality Engineering platform that empowers teams to test intelligently, smarter, and ship faster. Built for scale, it offers a full-stack testing cloud with 10K+ real devices and 3,000+ browsers. With AI-native test management, MCP servers, and agent-based automation, TestMu AI supports Selenium, Appium, Playwright, and all major frameworks.
 
-![altext](https://cdn.lambdatest.com/support/docs/wp-content/uploads/2019/12/Running-Geb-Tests-1.jpg)
+With TestMu AI (Formerly LambdaTest), you can run Geb automation tests on a cloud-based Selenium Grid of 3,000+ real browsers and operating systems. This sample shows how to configure and execute Geb tests using the TestMu AI (Formerly LambdaTest) Selenium Grid.
 
-## Prerequisites To Run Geb automation Scripts Over Online Selenium Grid
+- [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
+- Follow the [TestMu AI documentation](https://www.testmuai.com/support/docs/) (Formerly LambdaTest) for the full setup walkthrough.
 
-### Environment Setup 
+Based on Groovy, Geb is a web testing automation framework built as a wrapper over Selenium WebDriver, making it ideal for automated browser testing. Geb offers excellent features for web testing, screen scraping, and more. It queries HTML pages using jQuery-like syntax and provides built-in support for the Page Object pattern.
 
-### 1. Install Java For Your Operating System
-   
-*  For Windows:
-   
-   You can download Java for Windows from [here](http://www.java.com/en/download/manual.jsp)
-   
-   Run the installer and follow the setup wizard to install Java.
-   
-   Create a new JAVA_HOME environment variable and set variable value as path value to JDK folder. You can do this by going to
-   Control Panel > All Control Panel Items > System > Advanced system settings > Environment Variables
-   
-   ![altext](https://github.com/keshavissar001/selenide-testng-sample/blob/keshavissar001-patch-1/Img1.png)
-   
-* For Linux:
-   
-   Run the below command in your terminal:
-   ```
-   sudo apt-get install openjdk-8-jre
-   ```
-* For macOS:
-   
-  Java should already be present on Mac OS X by default.
-   
-### 2. Maven Installation
-   
-  Install Maven from [here](https://maven.apache.org/install.html)
-   
-### 3. LambdaTest Authentication Credentials
-   
-  Make sure you have your LambdaTest credentials with you to run test automation scripts with Jest on LambdaTest Selenium Grid. You can obtain these credentials from the [LambdaTest Automation Dashboard](https://automation.lambdatest.com/) or through [LambdaTest Profile](https://accounts.lambdatest.com/detail/profile).
-  Set LambdaTest Username and Access Key in environment variables.
-* For Linux/macOS:
- `export LT_USERNAME="YOUR_USERNAME"
-  export LT_ACCESS_KEY="YOUR ACCESS KEY"`
+### Prerequisites
+
+#### 1. Install Java For Your Operating System
 
 * For Windows:
- `set LT_USERNAME="YOUR_USERNAME"
-  set LT_ACCESS_KEY="YOUR ACCESS KEY"`
 
-## Setting Up The First Project For Geb Automation Testing 
+  Download Java for Windows from [here](http://www.java.com/en/download/manual.jsp). Run the installer and follow the setup wizard. Create a new `JAVA_HOME` environment variable pointing to the JDK folder.
 
-   **Step 1:** Clone this [GitHub repository for Geb framework](https://github.com/LambdaTest/geb-lambdatest). To clone the file, run the below command in your terminal or command prompt:
-   
-   `git clone https://github.com/LambdaTest/webdriverio-selenium-sample.git` 
- 
-   **Step 2:** After cloning, you'll have a zip file downloaded in your system. Right click on the zip file and extract files in your desired location.
-   
-   **Step 3:** Open terminal or command prompt and bring the pointer to the same folder where you extracted the cloned repository. 
+* For Linux:
 
-![altext](https://github.com/keshavissar001/images/blob/master/SetPathGeb.png)
+  ```bash
+  sudo apt-get install openjdk-8-jre
+  ```
 
-  **Step 4:** Under the folder **“geb-lambdatest-master”**, add your LambdaTest `username` and `accessKey` to the `./build.gradle` in “geb-lambdatest-master” in account{} section [For Lambdatest Credentials, Go to Lambdatest Profile Page][account_details] 
-      
-This is `./build.gradle` file :
+* For macOS:
 
+  Java should already be present on macOS by default.
+
+#### 2. Maven Installation
+
+Install Maven from [here](https://maven.apache.org/install.html).
+
+### Setup
+
+Clone the repository:
+
+```bash
+git clone https://github.com/LambdaTest/geb-lambdatest.git
+cd geb-lambdatest
 ```
 
+Add your TestMu AI (Formerly LambdaTest) `username` and `accessKey` to the `./build.gradle` in the `account{}` section.
+
+This is the `./build.gradle` file:
+
+```groovy
 apply plugin: "idea"
 apply plugin: "geb-lambdatest"
 
@@ -107,44 +91,54 @@ repositories {
     jcenter()
 }
 
-//test task will be used when you run the tests locally, not with cloud
+// test task will be used when you run the tests locally, not with cloud
 test {
     systemProperty "geb.build.reportsDir", reporting.file("$project.buildDir/test-results/$name/geb")
-    systemProperty "geb.env", 'firefox' //select an env/browser for local testing
+    systemProperty "geb.env", 'firefox' // select an env/browser for local testing
 }
 
 lambdaTest {
-    browsers{
+    browsers {
         firefox_windows
     }
     task {
-//            testClassesDir = rootProject.test.testClassesDir
-//            testSrcDirs = rootProject.test.testSrcDirs
-//            classpath = rootProject.test.classpath
         systemProperty "geb.build.reportsDir", reporting.file("$project.buildDir/test-results/$name/geb")
     }
-     account {
-        username = 'lambdatest username'      //Put Your username here
-        accessKey = 'lambdatest access token' //Put Your access token here
+    account {
+        username = 'lambdatest username'      // Put Your username here
+        accessKey = 'lambdatest access token' // Put Your access token here
     }
     tunnelOps {
         tunnelName = 'geb-'+UUID.randomUUID().toString()
     }
 }
-
-```
-## Running Geb Automation Tests On LambdaTest Selenium Grid
-
-This is an example of incorporating Geb LambdaTest Plugin into a Gradle build.
-The build is setup to work with a combination of Mozilla Firefox & Windows 10 on Lambdatest Selenium Automation Grid.
-Lets start with a simple test first. This geb script below tests whether the expected title is same as that of given page.
-
-To use it with different browser + OS combination you'll need to alter the `src/test/resources/GebConfig.groovy` file.
-
-This is the `GebConfig.groovy` file :
-
 ```
 
+Set your credentials as environment variables.
+
+**macOS / Linux:**
+
+```bash
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+```
+
+**Windows:**
+
+```bash
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+```
+
+## Running Geb Automation Tests On TestMu AI (Formerly LambdaTest) Selenium Grid
+
+This is an example of incorporating the Geb TestMu AI (Formerly LambdaTest) Plugin into a Gradle build. The build is set up to work with a combination of Mozilla Firefox & Windows 10 on the TestMu AI (Formerly LambdaTest) Selenium Automation Grid.
+
+To use it with different browser + OS combinations, alter the `src/test/resources/GebConfig.groovy` file.
+
+This is the `GebConfig.groovy` file:
+
+```groovy
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.remote.CapabilityType
@@ -178,7 +172,7 @@ if (lambdaTestBrowser) {
     }
 }
 
-//Default browser to run on local machine
+// Default browser to run on local machine
 environments {
 
     firefox {
@@ -190,15 +184,13 @@ environments {
     }
 
 }
-
 ```
 
-Following test will run with above mentioned capabilities.
+A simple test that checks whether the expected title matches the page title:
 
-This is the LambdaTestSpec.groovy file :
+This is the `LambdaTestSpec.groovy` file:
 
-```
-
+```groovy
 import geb.spock.GebReportingSpec
 
 class LambdaTestSpec extends GebReportingSpec {
@@ -213,12 +205,11 @@ class LambdaTestSpec extends GebReportingSpec {
     }
 
 }
-
 ```
 
-This is the LambdaTestPage.groovy file that is used in test file :
+This is the `LambdaTestPage.groovy` file:
 
-```
+```groovy
 import geb.Page
 
 class LambdaTestPage extends Page {
@@ -227,67 +218,86 @@ class LambdaTestPage extends Page {
     static at = { title == "Cross Browser Testing Tools | Free Automated Website Testing | LambdaTest" }
 
 }
-
 ```
 
-This is the LambdaTestResultPage.groovy file that is used in test file :
+This is the `LambdaTestResultPage.groovy` file:
 
-```
-
+```groovy
 import geb.Page
 
 class LambdaTestResultPage extends Page {
     static at = { title == "Cross Browser Testing Tools | Free Automated Website Testing | LambdaTest" }
 }
-
 ```
 
+### Run tests
 
-### The following command will launch the tests on lambdatest :
+For Windows:
 
-For windows :
-```
-    gradlew.bat clean allLambdaTestTests --info
-```
-
-For Bash/Linux/Mac :
-```
-   $ gradle clean allLambdaTestTests --info
+```bash
+gradlew.bat clean allLambdaTestTests --info
 ```
 
-These are the screenshots of the output :
+For Bash/Linux/Mac:
 
-![altext](https://github.com/keshavissar001/images/blob/master/GebResult1.png)
+```bash
+gradle clean allLambdaTestTests --info
+```
 
-![altext](https://github.com/keshavissar001/images/blob/master/GebResult2.png)
+View results on your TestMu AI dashboard.
 
-##  Testing Locally Hosted or Privately Hosted Projects
+## Testing Locally Hosted or Privately Hosted Projects
 
-To help you perform cross browser testing of your locally stored web pages, LambdaTest provides an SSH(Secure Shell) tunnel connection with the name Lambda Tunnel. With Lambda Tunnel, you can test your locally hosted files before you make them live over the internet. You could even perform cross browser testing from different IP addresses belonging to various geographic locations. You can also use LambdaTest Tunnel to test web-apps and websites that are permissible inside your corporate firewall.
+To help you perform cross browser testing of your locally stored web pages, TestMu AI (Formerly LambdaTest) provides an SSH tunnel connection called Lambda Tunnel. With Lambda Tunnel, you can test your locally hosted files before you make them live over the internet.
 
-* Set tunnel value to True in test capabilities
-> OS specific instructions to download and setup tunnel binary can be found at the following links.
->    - [Windows](https://www.lambdatest.com/support/docs/display/TD/Local+Testing+For+Windows)
->    - [Mac](https://www.lambdatest.com/support/docs/display/TD/Local+Testing+For+MacOS)
->    - [Linux](https://www.lambdatest.com/support/docs/display/TD/Local+Testing+For+Linux)
+* Set `tunnel` value to `true` in test capabilities
 
-After setting tunnel you can also see the active tunnel in our LambdaTest dashboard:
+OS-specific instructions to download and set up the tunnel binary:
+* [Windows](https://www.testmuai.com/support/docs/display/TD/Local+Testing+For+Windows)
+* [Mac](https://www.testmuai.com/support/docs/display/TD/Local+Testing+For+MacOS)
+* [Linux](https://www.testmuai.com/support/docs/display/TD/Local+Testing+For+Linux)
 
+**Important Note:** Some Safari & IE browsers don't support automatic resolution of the URL string "localhost". Therefore if you test on URLs like `http://localhost/` or `http://localhost:8080`, you would get an error in these browsers. A possible solution is to use `localhost.lambdatest.com` or replace the string "localhost" with your machine IP address.
 
-![tn](https://github.com/Apoorvlt/test/blob/master/tn.PNG)
+## Contributions
 
-### Important Note:
-Some Safari & IE browsers, doesn't support automatic resolution of the URL string "localhost". Therefore if you test on URLs like "http://localhost/" or "http://localhost:8080" etc, you would get an error in these browsers. A possible solution is to use "localhost.lambdatest.com" or replace the string "localhost" with machine IP address. For example if you wanted to test "http://localhost/dashboard" or, and your machine IP is 192.168.2.6 you can instead test on "http://192.168.2.6/dashboard" or "http://localhost.lambdatest.com/dashboard".
+Contributions are welcome. Open an issue to discuss your idea before submitting a pull request. When reporting bugs, include your Java version, OS, and Geb version.
 
-## About LambdaTest
+## TestMu AI (Formerly LambdaTest) Community
 
-[LambdaTest](https://www.lambdatest.com/) is a cloud based selenium grid infrastructure that can help you run automated cross browser compatibility tests on 2000+ different browser and operating system environments. LambdaTest supports all programming languages and frameworks that are supported with Selenium, and have easy integrations with all popular CI/CD platforms. It's a perfect solution to bring your [selenium automation testing](https://www.lambdatest.com/selenium-automation) to cloud based infrastructure that not only helps you increase your test coverage over multiple desktop and mobile browsers, but also allows you to cut down your test execution time by running tests on parallel.
+Connect with testers and developers in the [TestMu AI Community](https://community.testmuai.com/). Ask questions, share what you are building, and discuss best practices in test automation and DevOps.
 
-## Questions and issues
+## TestMu AI (Formerly LambdaTest) Certifications
 
-Please ask questions on [Lambdatest Support][lambdatest_support] and raise issues on [Lambdatest Community][lambdatest_community].
+Earn free [TestMu AI Certifications](https://www.testmuai.com/certifications/) for testers, developers, and QA engineers. Validate your skills in Selenium, Cypress, Playwright, Appium, Espresso and more. Industry-recognized, shareable on LinkedIn, and built by practitioners, not marketers.
 
+## Learning Resources by TestMu AI (Formerly LambdaTest)
 
-[lambdatest_support]: https://www.lambdatest.com/support
-[lambdatest_community]: https://community.lambdatest.com
-[account_details]: https://accounts.lambdatest.com/detail/profile
+Learn modern testing through tutorials, guides, videos, and weekly updates:
+
+* [TestMu AI Blog](https://www.testmuai.com/blog/)
+* [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/)
+* [TestMu AI on YouTube](https://www.youtube.com/@TestMuAI)
+* [TestMu AI Newsletter](https://www.testmuai.com/newsletter/)
+
+## LambdaTest is Now TestMu AI
+
+On **January 12, 2026**, [LambdaTest evolved to TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/), the world's first fully autonomous **Agentic AI Quality Engineering Platform**.
+
+Same team. Same infrastructure. Same customer accounts. All existing LambdaTest logins, scripts, capabilities, and integrations continue to work without change.
+
+Find the new home for [LambdaTest](https://www.testmuai.com).
+
+### How LambdaTest Evolved into TestMu AI
+
+In 2017, we launched LambdaTest with a simple mission: make testing fast, reliable, and accessible. As LambdaTest grew, we expanded into Test Intelligence, Visual Regression Testing, Accessibility Testing, API Testing, and Performance Testing, covering the full depth of the testing lifecycle.
+
+As software development entered the AI era, testing had to evolve, too. We rebuilt the architecture to be AI-native from the ground up, with autonomous agents that **plan, author, execute, analyze, and optimize tests** while keeping humans in the loop. The platform integrates with your repos, CI, IDEs, and terminals, continuously learning from every code change and development signal.
+
+That evolution earned a new name: **TestMu AI**, built for an AI-first future of quality engineering. TestMu is not a new name for us. It is the name of our annual community conference, which has brought together 100,000+ quality engineers to discuss how AI would reshape testing, long before that became an industry norm.
+
+What started as a high-performance cloud testing platform has transformed into an AI-native, multi-agent system powering a connected, end-to-end quality layer. That evolution defined a new identity: LambdaTest evolved into TestMu AI, built for an AI-first future of quality engineering.
+
+## Support
+
+Got a question? Email [support@testmuai.com](mailto:support@testmuai.com) or chat with us 24x7 from our chat portal.
